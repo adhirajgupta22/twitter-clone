@@ -1,4 +1,5 @@
 # Authentication API Documentation
+- **MAIN URL:** `http://localhost:3000/api/auth/`
 
 ## Endpoints
 

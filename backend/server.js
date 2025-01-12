@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
+const {v2:cloudinary} = require('cloudinary');
 
 const connectDB = require('./config/db.config');
 const cookieParser = require('cookie-parser');
@@ -12,6 +13,12 @@ const userRoutes = require('./routes/user.route');
 const postRoutes = require('./routes/post.route');
 
 dotenv.config();  //helps in configuration of .env files variables
+cloudinary.config({
+    cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_API_SECRET,
+});
+
 const app = express();
 const port = process.env.PORT || 5000;
 const _dirname = path.resolve();
@@ -25,8 +32,8 @@ app.get('/', (req, res) => {
     res.send("home page of server");
 });
 app.use('/api/auth', authRoutes);
-app.use('/api/notification', notificationRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/notification', notificationRoutes);
 app.use('/api/posts', postRoutes);
 
 app.listen(port, () => {
