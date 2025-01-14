@@ -10,7 +10,7 @@ const postSchema = new mongoose.Schema(
         text:{
             type: String,
         },
-        image:{
+        img:{
             type: String,
         },
         likes:[
@@ -22,7 +22,7 @@ const postSchema = new mongoose.Schema(
         comments:[
             {
                 text: {
-                    String,
+                    type:String,
                     required: true,
                 },
                 user: {

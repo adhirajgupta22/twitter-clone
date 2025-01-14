@@ -145,3 +145,5 @@
 
 - **500 Internal Server Error**
   - Internal server error in profile middleware
+
+
